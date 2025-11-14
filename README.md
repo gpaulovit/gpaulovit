@@ -49,8 +49,8 @@ I am dedicated to constantly evolving my software engineering abilities, focusin
 ###
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=gpaulovit&hide_title=false&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=merko&locale=pt-br&hide_border=false&order=1" height="143" alt="stats graph"  />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=gpaulovit&layout=compact&langs_count=7&theme=merko&locale=pt-br" height="143" alt="top languages graph"  />
+    <img src="https://github-readme-stats.vercel.app/api?username=gpaulovit&hide_title=false&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=nord&locale=pt-br&hide_border=false&order=1&cache_seconds=43200" height="143" alt="stats graph"  />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=gpaulovit&layout=compact&langs_count=7&theme=nord&locale=pt-br&cache_seconds=86400" height="143" alt="top languages graph"  />
 </div>
 
 ###
