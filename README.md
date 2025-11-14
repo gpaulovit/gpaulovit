@@ -1,8 +1,20 @@
 ## Hi everyone 👋
 
-I am a Software Engineering student at the **University of Brasília (UnB)**, committed to continuous development in the technology and engineering sector. I have a strong foundation in logic, mathematics, and problem-solving, which I leverage in software development to build efficient solutions.
+I'm Paulo, a Software Engineering student at the **University of Brasília (UnB)**, committed to continuous development in the technology and engineering sector. I have a strong foundation in logic, mathematics, and problem-solving, which I leverage in software development to build efficient solutions.
 
 I am dedicated to constantly evolving my software engineering abilities, focusing on both *technical expertise* and skills in *project organization*, *documentation*, and *teamwork*.
+
+### 🤝 Connect with Me
+
+<p align="left">
+  <a href="https://www.linkedin.com/in/gpaulovit" target="_blank">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
+  </a>
+  <a href="https://github.com/gpaulovit" target="_blank">
+    <img src="https://img.shields.io/github/followers/gpaulovit?style=for-the-badge&label=Follow&logo=github&logoColor=white&color=555" alt="GitHub Followers"/>
+  </a>
+</p>
+
 ###
 
 <h3 align="left">Studied technologies</h3>
@@ -37,8 +49,8 @@ I am dedicated to constantly evolving my software engineering abilities, focusin
 ###
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=gpaulovit&hide_title=false&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=dark&locale=en&hide_border=false&order=1" height="143" alt="stats graph"  />
- 
+  <img src="https://github-readme-stats.vercel.app/api?username=gpaulovit&hide_title=false&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=dark&locale=pt-br&hide_border=false&order=1" height="143" alt="stats graph"  />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=gpaulovit&layout=compact&langs_count=7&theme=dark&locale=pt-br" height="143" alt="top languages graph"  />
 </div>
 
 ###
