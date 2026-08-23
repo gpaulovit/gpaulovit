@@ -14,6 +14,64 @@ BAR_SHADES = ["#A78BFA", "#8B5CF6", "#7C3AED", "#6D28D9", "#5B21B6", "#4C1D95"]
 
 GRAPHQL_URL = "https://api.github.com/graphql"
 
+# Limiares para os selos de "Conquistas" (trophies) — escala própria, não
+# relacionada ao cálculo de rank abaixo.
+THRESHOLDS = {
+    "total_commits": 1000,
+    "total_prs": 50,
+    "total_reviews": 50,
+    "total_issues": 25,
+    "total_stars": 50,
+    "followers": 50,
+}
+TIERS = ["S", "A+", "A", "A-", "B+", "B", "B-", "C+", "C"]
+TIER_CUTOFFS = [0.90, 0.80, 0.65, 0.50, 0.40, 0.30, 0.20, 0.10, 0.0]
+
+
+def letter_grade(ratio: float):
+    ratio = max(0.0, min(1.0, ratio))
+    for tier, cutoff in zip(TIERS, TIER_CUTOFFS):
+        if ratio >= cutoff:
+            idx = TIERS.index(tier)
+            color = BAR_SHADES[min(idx, len(BAR_SHADES) - 1)]
+            return tier, color
+    return "C", BAR_SHADES[-1]
+
+
+# ---------- Rank oficial (reproduz src/calculateRank.js do github-readme-stats) ----------
+# Validado contra o teste do projeto: commits=125, prs=25, issues=10, stars=25,
+# followers=5 (all_commits=False) -> level "B-", percentile 69.333868386557
+
+def exponential_cdf(x: float) -> float:
+    return 1 - (2 ** (-x))
+
+
+def log_normal_cdf(x: float) -> float:
+    return x / (1 + x)
+
+
+def calculate_official_rank(s: dict):
+    COMMITS_MEDIAN, COMMITS_WEIGHT = 1000, 2  # all_commits=True (histórico total)
+    PRS_MEDIAN, PRS_WEIGHT = 50, 3
+    ISSUES_MEDIAN, ISSUES_WEIGHT = 25, 1
+    STARS_MEDIAN, STARS_WEIGHT = 50, 4
+    FOLLOWERS_MEDIAN, FOLLOWERS_WEIGHT = 10, 1
+    TOTAL_WEIGHT = COMMITS_WEIGHT + PRS_WEIGHT + ISSUES_WEIGHT + STARS_WEIGHT + FOLLOWERS_WEIGHT
+
+    raw = (
+        COMMITS_WEIGHT * exponential_cdf(s["total_commits"] / COMMITS_MEDIAN)
+        + PRS_WEIGHT * exponential_cdf(s["total_prs"] / PRS_MEDIAN)
+        + ISSUES_WEIGHT * exponential_cdf(s["total_issues"] / ISSUES_MEDIAN)
+        + STARS_WEIGHT * log_normal_cdf(s["total_stars"] / STARS_MEDIAN)
+        + FOLLOWERS_WEIGHT * log_normal_cdf(s["followers"] / FOLLOWERS_MEDIAN)
+    ) / TOTAL_WEIGHT
+
+    percentile = 100 * (1 - raw)
+    thresholds = [1, 12.5, 25, 37.5, 50, 62.5, 75, 87.5, 100]
+    levels = ["S", "A+", "A", "A-", "B+", "B", "B-", "C+", "C"]
+    level = next(lvl for lvl, t in zip(levels, thresholds) if percentile <= t)
+    return level, percentile, raw
+
 
 def gh_graphql(query: str, variables: dict, token: str) -> dict:
     resp = requests.post(
@@ -50,6 +108,8 @@ def fetch_profile(username: str, token: str) -> dict:
     """
     data = gh_graphql(query, {"login": username}, token)["user"]
 
+    # soma commits/PRs/issues ano a ano, desde a criacao da conta,
+    # pois contributionsCollection so cobre 1 ano por chamada
     created = datetime.datetime.fromisoformat(data["createdAt"].replace("Z", "+00:00"))
     now = datetime.datetime.now(datetime.timezone.utc)
 
@@ -172,7 +232,10 @@ def render_stats_svg(username: str, s: dict) -> str:
         ("Commits (histórico total)", s["total_commits"]),
     ]
 
-    width, row_h, top_pad = 460, 30, 70
+    rank_zone = 130
+    left_w = 400
+    width = left_w + rank_zone
+    row_h, top_pad = 30, 70
     height = top_pad + row_h * len(rows) + 20
 
     body = []
@@ -183,14 +246,39 @@ def render_stats_svg(username: str, s: dict) -> str:
         <g transform="translate(25, {y})">
           <rect x="0" y="4" width="8" height="8" rx="2" fill="{shade}"/>
           <text x="20" y="13" fill="{TEXT}" font-size="13" font-family="Segoe UI, Helvetica, Arial, sans-serif">{label}</text>
-          <text x="{width - 45}" y="13" fill="{TITLE}" font-size="14" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">{value:,}</text>
+          <text x="{left_w - 25}" y="13" fill="{TITLE}" font-size="14" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">{value:,}</text>
         </g>''')
+
+    tier, percentile, raw = calculate_official_rank(s)
+    levels_order = ["S", "A+", "A", "A-", "B+", "B", "B-", "C+", "C"]
+    tier_color = BAR_SHADES[min(levels_order.index(tier), len(BAR_SHADES) - 1)]
+    cx = left_w + rank_zone / 2
+    cy = height / 2
+    r = 42
+    circumference = 2 * 3.14159265 * r
+    dash = circumference * raw
+
+    rank_group = f'''
+    <g>
+      <circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="{BORDER}" stroke-width="8"/>
+      <circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="{tier_color}" stroke-width="8"
+              stroke-linecap="round" stroke-dasharray="{dash:.1f} {circumference:.1f}"
+              transform="rotate(-90 {cx} {cy})"/>
+      <text x="{cx}" y="{cy + 10}" fill="{tier_color}" font-size="30" font-weight="800"
+            font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">{tier}</text>
+      <text x="{cx}" y="{cy + r + 22}" fill="{MUTED}" font-size="11"
+            font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">Classificação</text>
+      <text x="{cx}" y="{cy + r + 37}" fill="{MUTED}" font-size="10"
+            font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">top {percentile:.1f}%</text>
+    </g>'''
 
     svg = f'''<svg width="{width}" height="{height}" viewBox="0 0 {width} {height}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GitHub stats de {username}">
   <rect x="0.5" y="0.5" rx="12" width="{width - 1}" height="{height - 1}" fill="{BG}" stroke="{BORDER}" stroke-width="1"/>
   <text x="25" y="35" fill="{TITLE}" font-size="17" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif">Estatísticas do GitHub</text>
   <line x1="25" y1="46" x2="{width - 25}" y2="46" stroke="{BORDER}" stroke-width="1"/>
+  <line x1="{left_w}" y1="55" x2="{left_w}" y2="{height - 15}" stroke="{BORDER}" stroke-width="1" opacity="0.5"/>
   {''.join(body)}
+  {rank_group}
 </svg>'''
     return svg
 
@@ -226,6 +314,42 @@ def render_langs_svg(username: str, lang_bytes: dict) -> str:
     return svg
 
 
+def render_trophies_svg(username: str, s: dict) -> str:
+    categories = [
+        ("Estrelas", "total_stars"),
+        ("Commits", "total_commits"),
+        ("Pull Reqs", "total_prs"),
+        ("Issues", "total_issues"),
+        ("Revisões", "total_reviews"),
+        ("Seguidores", "followers"),
+    ]
+
+    box_w, box_h, gap, top_pad = 72, 90, 8, 55
+    width = len(categories) * box_w + (len(categories) - 1) * gap + 50
+    height = top_pad + box_h + 20
+
+    body = []
+    for i, (label, key) in enumerate(categories):
+        ratio = min(1.0, s[key] / THRESHOLDS[key])
+        tier, color = letter_grade(ratio)
+        x = 25 + i * (box_w + gap)
+        y = top_pad
+        body.append(f'''
+        <g transform="translate({x}, {y})">
+          <rect x="0" y="0" width="{box_w}" height="{box_h}" rx="10" fill="none" stroke="{color}" stroke-width="1.5" opacity="0.7"/>
+          <text x="{box_w/2}" y="34" fill="{color}" font-size="22" font-weight="800" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">{tier}</text>
+          <text x="{box_w/2}" y="56" fill="{TEXT}" font-size="11" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">{label}</text>
+          <text x="{box_w/2}" y="74" fill="{MUTED}" font-size="10" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">{s[key]:,}</text>
+        </g>''')
+
+    svg = f'''<svg width="{width}" height="{height}" viewBox="0 0 {width} {height}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Conquistas de {username}">
+  <rect x="0.5" y="0.5" rx="12" width="{width - 1}" height="{height - 1}" fill="{BG}" stroke="{BORDER}" stroke-width="1"/>
+  <text x="25" y="30" fill="{TITLE}" font-size="17" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif">Conquistas</text>
+  {''.join(body)}
+</svg>'''
+    return svg
+
+
 def main():
     username = os.environ.get("GH_USERNAME")
     token = os.environ.get("GH_PAT")
@@ -243,8 +367,10 @@ def main():
         f.write(render_langs_svg(username, stats["lang_bytes"]))
     with open("dist/activity.svg", "w", encoding="utf-8") as f:
         f.write(render_activity_svg(username, weekly_totals))
+    with open("dist/trophies.svg", "w", encoding="utf-8") as f:
+        f.write(render_trophies_svg(username, stats))
 
-    print("Gerado: dist/stats.svg, dist/top-langs.svg e dist/activity.svg")
+    print("Gerado: dist/stats.svg, dist/top-langs.svg, dist/activity.svg e dist/trophies.svg")
 
 
 if __name__ == "__main__":
