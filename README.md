@@ -50,9 +50,13 @@ Estudante de **Engenharia de Software na UnB** (IRA 4.04), atuando como ponte en
 ## Métricas & Performance
 
 <div align="center">
-<img src="https://github-readme-stats.vercel.app/api?username=gpaulovit&show_icons=true&include_all_commits=true&count_private=true&theme=transparent&hide_border=true&title_color=A78BFA&icon_color=A78BFA&text_color=E5E7EB&bg_color=00000000" height="165" alt="stats"/>
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=gpaulovit&layout=compact&langs_count=7&theme=transparent&hide_border=true&title_color=A78BFA&text_color=E5E7EB&bg_color=00000000" height="165" alt="top langs"/>
+<img src="dist/stats.svg" alt="stats"/>
+<img src="dist/top-langs.svg" alt="top langs"/>
 </div>
+
+<!-- Os dois cards acima são gerados automaticamente pelo workflow stats.yml
+     e vivem dentro deste repositório (dist/stats.svg e dist/top-langs.svg) —
+     não dependem de nenhum serviço externo, então nunca aparecem quebrados. -->
 
 <div align="center">
 <img src="https://streak-stats.demolab.com?user=gpaulovit&theme=transparent&hide_border=true&background=00000000&stroke=A78BFA&ring=8B5CF6&fire=A78BFA&currStreakLabel=A78BFA&sideLabels=E5E7EB&currStreakNum=E5E7EB&sideNums=E5E7EB&dates=6B7280" alt="streak stats" height="165"/>
