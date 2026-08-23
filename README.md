@@ -29,6 +29,7 @@ Estudante de **Engenharia de Software na UnB** (IRA 4.04), atuando como ponte en
 <img src="https://img.shields.io/badge/Python-12121a?style=for-the-badge&logo=python&logoColor=A78BFA"/>
 <img src="https://img.shields.io/badge/JavaScript-12121a?style=for-the-badge&logo=javascript&logoColor=A78BFA"/>
 <img src="https://img.shields.io/badge/C-12121a?style=for-the-badge&logo=c&logoColor=A78BFA"/>
+<img src="https://img.shields.io/badge/SQL-12121a?style=for-the-badge&logo=sql&logoColor=A78BFA"/>
 <img src="https://img.shields.io/badge/Docker-12121a?style=for-the-badge&logo=docker&logoColor=A78BFA"/>
 <img src="https://img.shields.io/badge/Git-12121a?style=for-the-badge&logo=git&logoColor=A78BFA"/>
 <img src="https://img.shields.io/badge/GitHub-12121a?style=for-the-badge&logo=github&logoColor=A78BFA"/>
@@ -51,18 +52,6 @@ Estudante de **Engenharia de Software na UnB** (IRA 4.04), atuando como ponte en
 <div align="center">
 <img src="dist/stats.svg" alt="stats"/>
 <img src="dist/top-langs.svg" alt="top langs"/>
-</div>
-
-<!-- Os dois cards acima são gerados automaticamente pelo workflow stats.yml
-     e vivem dentro deste repositório (dist/stats.svg e dist/top-langs.svg) —
-     não dependem de nenhum serviço externo, então nunca aparecem quebrados. -->
-
-<div align="center">
-<img src="dist/streak.svg" alt="streak stats"/>
-</div>
-
-<div align="center">
-<img src="dist/activity.svg" width="97%" alt="activity graph"/>
 </div>
 
 <div align="center">
