@@ -63,11 +63,23 @@ Estudante de **Engenharia de Software na UnB** (IRA 4.04), atuando como ponte en
 </div>
 
 <div align="center">
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=gpaulovit&theme=react-dark&hide_border=true&bg_color=00000000&color=A78BFA&line=A78BFA&point=E9D5FF&area=true&area_color=6D28D9" width="97%" alt="activity graph"/>
+<img src="dist/activity.svg" width="97%" alt="activity graph"/>
 </div>
 
 <div align="center">
 <img src="https://github-profile-trophy.vercel.app/?username=gpaulovit&theme=algolia&no-frame=true&no-bg=true&row=1&column=6&margin-w=8" alt="trophies"/>
+</div>
+
+<br/>
+
+<div align="center">
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/gpaulovit/gpaulovit/output/github-contribution-grid-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/gpaulovit/gpaulovit/output/github-contribution-grid-snake.svg" />
+  <img alt="snake de contribuições" src="https://raw.githubusercontent.com/gpaulovit/gpaulovit/output/github-contribution-grid-snake.svg" />
+</picture>
+
 </div>
 
 <br/>
