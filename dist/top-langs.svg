@@ -5,33 +5,33 @@
   
         <g transform="translate(25, 60)">
           <text x="0" y="14" fill="#E5E7EB" font-size="13" font-family="Segoe UI, Helvetica, Arial, sans-serif">TypeScript</text>
-          <text x="410" y="14" fill="#6B7280" font-size="12" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">51.9%</text>
+          <text x="410" y="14" fill="#6B7280" font-size="12" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">51.3%</text>
           <rect x="0" y="20" width="270" height="6" rx="3" fill="#2E1065" opacity="0.4"/>
-          <rect x="0" y="20" width="140.1" height="6" rx="3" fill="#A78BFA"/>
+          <rect x="0" y="20" width="138.4" height="6" rx="3" fill="#A78BFA"/>
         </g>
         <g transform="translate(25, 94)">
           <text x="0" y="14" fill="#E5E7EB" font-size="13" font-family="Segoe UI, Helvetica, Arial, sans-serif">Python</text>
-          <text x="410" y="14" fill="#6B7280" font-size="12" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">30.0%</text>
+          <text x="410" y="14" fill="#6B7280" font-size="12" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">30.8%</text>
           <rect x="0" y="20" width="270" height="6" rx="3" fill="#2E1065" opacity="0.4"/>
-          <rect x="0" y="20" width="81.0" height="6" rx="3" fill="#8B5CF6"/>
+          <rect x="0" y="20" width="83.3" height="6" rx="3" fill="#8B5CF6"/>
         </g>
         <g transform="translate(25, 128)">
           <text x="0" y="14" fill="#E5E7EB" font-size="13" font-family="Segoe UI, Helvetica, Arial, sans-serif">HTML</text>
-          <text x="410" y="14" fill="#6B7280" font-size="12" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">6.7%</text>
+          <text x="410" y="14" fill="#6B7280" font-size="12" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">6.6%</text>
           <rect x="0" y="20" width="270" height="6" rx="3" fill="#2E1065" opacity="0.4"/>
-          <rect x="0" y="20" width="18.2" height="6" rx="3" fill="#7C3AED"/>
+          <rect x="0" y="20" width="17.9" height="6" rx="3" fill="#7C3AED"/>
         </g>
         <g transform="translate(25, 162)">
           <text x="0" y="14" fill="#E5E7EB" font-size="13" font-family="Segoe UI, Helvetica, Arial, sans-serif">CSS</text>
           <text x="410" y="14" fill="#6B7280" font-size="12" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">5.1%</text>
           <rect x="0" y="20" width="270" height="6" rx="3" fill="#2E1065" opacity="0.4"/>
-          <rect x="0" y="20" width="13.8" height="6" rx="3" fill="#6D28D9"/>
+          <rect x="0" y="20" width="13.6" height="6" rx="3" fill="#6D28D9"/>
         </g>
         <g transform="translate(25, 196)">
           <text x="0" y="14" fill="#E5E7EB" font-size="13" font-family="Segoe UI, Helvetica, Arial, sans-serif">C++</text>
-          <text x="410" y="14" fill="#6B7280" font-size="12" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">3.7%</text>
+          <text x="410" y="14" fill="#6B7280" font-size="12" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">3.6%</text>
           <rect x="0" y="20" width="270" height="6" rx="3" fill="#2E1065" opacity="0.4"/>
-          <rect x="0" y="20" width="9.9" height="6" rx="3" fill="#5B21B6"/>
+          <rect x="0" y="20" width="9.8" height="6" rx="3" fill="#5B21B6"/>
         </g>
         <g transform="translate(25, 230)">
           <text x="0" y="14" fill="#E5E7EB" font-size="13" font-family="Segoe UI, Helvetica, Arial, sans-serif">JavaScript</text>
