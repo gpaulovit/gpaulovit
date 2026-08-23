@@ -25,9 +25,8 @@ Estudante de **Engenharia de Software na UnB** (IRA 4.04), atuando como ponte en
 ## Stack técnica
 
 <div align="left">
+<img src="https://img.shields.io/badge/TypeScript-12121a?style=for-the-badge&logo=typescript&logoColor=A78BFA"/>
 <img src="https://img.shields.io/badge/Python-12121a?style=for-the-badge&logo=python&logoColor=A78BFA"/>
-<img src="https://img.shields.io/badge/SQL-12121a?style=for-the-badge&logo=postgresql&logoColor=A78BFA"/>
-<img src="https://img.shields.io/badge/PostgreSQL-12121a?style=for-the-badge&logo=postgresql&logoColor=A78BFA"/>
 <img src="https://img.shields.io/badge/JavaScript-12121a?style=for-the-badge&logo=javascript&logoColor=A78BFA"/>
 <img src="https://img.shields.io/badge/C-12121a?style=for-the-badge&logo=c&logoColor=A78BFA"/>
 <img src="https://img.shields.io/badge/Docker-12121a?style=for-the-badge&logo=docker&logoColor=A78BFA"/>
@@ -59,7 +58,7 @@ Estudante de **Engenharia de Software na UnB** (IRA 4.04), atuando como ponte en
      não dependem de nenhum serviço externo, então nunca aparecem quebrados. -->
 
 <div align="center">
-<img src="https://streak-stats.demolab.com?user=gpaulovit&theme=transparent&hide_border=true&background=00000000&stroke=A78BFA&ring=8B5CF6&fire=A78BFA&currStreakLabel=A78BFA&sideLabels=E5E7EB&currStreakNum=E5E7EB&sideNums=E5E7EB&dates=6B7280" alt="streak stats" height="165"/>
+<img src="dist/streak.svg" alt="streak stats"/>
 </div>
 
 <div align="center">
