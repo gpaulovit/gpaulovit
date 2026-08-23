@@ -1,15 +1,4 @@
-#!/usr/bin/env python3
-"""
-Gera dois cartoes SVG estaticos (stats.svg e top-langs.svg) a partir dos dados
-publicos/privados do GitHub do usuario, no tema roxo do perfil.
 
-Variaveis de ambiente esperadas:
-  GH_USERNAME  -> login do GitHub (ex: gpaulovit)
-  GH_PAT       -> Personal Access Token com escopo 'repo' e 'read:user'
-
-Uso:
-  GH_USERNAME=gpaulovit GH_PAT=xxxx python3 generate_stats.py
-"""
 
 import os
 import sys
@@ -119,7 +108,58 @@ def fetch_profile(username: str, token: str) -> dict:
     }
 
 
-# ---------- Renderizacao SVG ----------
+def fetch_calendar(username: str, token: str) -> list:
+    query = """
+    query($login: String!) {
+      user(login: $login) {
+        contributionsCollection {
+          contributionCalendar {
+            weeks {
+              contributionDays { date contributionCount }
+            }
+          }
+        }
+      }
+    }
+    """
+    data = gh_graphql(query, {"login": username}, token)["user"]
+    weeks = data["contributionsCollection"]["contributionCalendar"]["weeks"]
+    return [sum(d["contributionCount"] for d in w["contributionDays"]) for w in weeks]
+
+
+def render_activity_svg(username: str, weekly_totals: list) -> str:
+    width, height = 460, 190
+    pad_l, pad_r, pad_t, pad_b = 25, 20, 45, 25
+    plot_w = width - pad_l - pad_r
+    plot_h = height - pad_t - pad_b
+    max_val = max(weekly_totals) or 1
+    n = max(1, len(weekly_totals))
+    step = plot_w / max(1, n - 1)
+
+    points = []
+    for i, v in enumerate(weekly_totals):
+        x = pad_l + i * step
+        y = pad_t + plot_h - (v / max_val) * plot_h
+        points.append((x, y))
+
+    line_path = "M " + " L ".join(f"{x:.1f},{y:.1f}" for x, y in points)
+    area_path = (
+        line_path
+        + f" L {points[-1][0]:.1f},{pad_t + plot_h:.1f}"
+        + f" L {points[0][0]:.1f},{pad_t + plot_h:.1f} Z"
+    )
+    total = sum(weekly_totals)
+
+    svg = f'''<svg width="{width}" height="{height}" viewBox="0 0 {width} {height}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Atividade de commits de {username} nas ultimas 52 semanas">
+  <rect x="0.5" y="0.5" rx="12" width="{width - 1}" height="{height - 1}" fill="{BG}" stroke="{BORDER}" stroke-width="1"/>
+  <text x="25" y="30" fill="{TITLE}" font-size="17" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif">Atividade recente</text>
+  <text x="{width - 25}" y="30" fill="{MUTED}" font-size="12" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">{total:,} contribuições</text>
+  <line x1="25" y1="41" x2="{width - 25}" y2="41" stroke="{BORDER}" stroke-width="1"/>
+  <path d="{area_path}" fill="{TITLE}" opacity="0.18"/>
+  <path d="{line_path}" fill="none" stroke="{TITLE}" stroke-width="2"/>
+</svg>'''
+    return svg
+
 
 def render_stats_svg(username: str, s: dict) -> str:
     rows = [
@@ -194,14 +234,17 @@ def main():
         sys.exit(1)
 
     stats = fetch_profile(username, token)
+    weekly_totals = fetch_calendar(username, token)
 
     os.makedirs("dist", exist_ok=True)
     with open("dist/stats.svg", "w", encoding="utf-8") as f:
         f.write(render_stats_svg(username, stats))
     with open("dist/top-langs.svg", "w", encoding="utf-8") as f:
         f.write(render_langs_svg(username, stats["lang_bytes"]))
+    with open("dist/activity.svg", "w", encoding="utf-8") as f:
+        f.write(render_activity_svg(username, weekly_totals))
 
-    print("Gerado: dist/stats.svg e dist/top-langs.svg")
+    print("Gerado: dist/stats.svg, dist/top-langs.svg e dist/activity.svg")
 
 
 if __name__ == "__main__":
