@@ -1,10 +1,10 @@
 
-
 import os
 import sys
 import datetime
 import requests
 
+# ---------- Paleta (mesma do README) ----------
 BG = "#12121a"
 BORDER = "#2E1065"
 TITLE = "#A78BFA"
@@ -117,6 +117,7 @@ def fetch_profile(username: str, token: str) -> dict:
     total_prs = 0
     total_issues = 0
     total_reviews = 0
+    daily_contributions = []  # lista de (data_iso, contagem), em ordem cronológica
 
     year_query = """
     query($login: String!, $from: DateTime!, $to: DateTime!) {
@@ -126,6 +127,11 @@ def fetch_profile(username: str, token: str) -> dict:
           totalPullRequestContributions
           totalIssueContributions
           totalPullRequestReviewContributions
+          contributionCalendar {
+            weeks {
+              contributionDays { date contributionCount }
+            }
+          }
         }
       }
     }
@@ -143,7 +149,12 @@ def fetch_profile(username: str, token: str) -> dict:
         total_prs += yr_data["totalPullRequestContributions"]
         total_issues += yr_data["totalIssueContributions"]
         total_reviews += yr_data["totalPullRequestReviewContributions"]
+        for week in yr_data["contributionCalendar"]["weeks"]:
+            for day in week["contributionDays"]:
+                daily_contributions.append((day["date"], day["contributionCount"]))
         year += 1
+
+    daily_contributions.sort(key=lambda d: d[0])
 
     repos = data["repositories"]["nodes"]
     total_stars = sum(r["stargazerCount"] for r in repos)
@@ -165,6 +176,7 @@ def fetch_profile(username: str, token: str) -> dict:
         "total_issues": total_issues,
         "total_reviews": total_reviews,
         "lang_bytes": lang_bytes,
+        "daily_contributions": daily_contributions,
     }
 
 
@@ -350,6 +362,106 @@ def render_trophies_svg(username: str, s: dict) -> str:
     return svg
 
 
+MONTHS_PT = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
+
+
+def fmt_date(date_iso: str) -> str:
+    y, m, d = date_iso.split("-")
+    return f"{int(d)} {MONTHS_PT[int(m) - 1]} {y}"
+
+
+def compute_streaks(daily: list) -> dict:
+    if not daily:
+        return None
+
+    total = sum(c for _, c in daily)
+
+    # streak atual: conta de trás pra frente; se o ultimo dia (hoje) ainda
+    # nao tem contribuicao, pula ele (o dia ainda nao acabou) sem quebrar a sequencia
+    idx = len(daily) - 1
+    if daily[idx][1] == 0:
+        idx -= 1
+    current_streak = 0
+    current_start = current_end = None
+    while idx >= 0 and daily[idx][1] > 0:
+        if current_streak == 0:
+            current_end = daily[idx][0]
+        current_start = daily[idx][0]
+        current_streak += 1
+        idx -= 1
+
+    # maior streak: maior sequencia consecutiva de dias com contribuicao > 0
+    longest = 0
+    longest_start = longest_end = None
+    run = 0
+    run_start = None
+    for date_iso, count in daily:
+        if count > 0:
+            if run == 0:
+                run_start = date_iso
+            run += 1
+            if run > longest:
+                longest = run
+                longest_start = run_start
+                longest_end = date_iso
+        else:
+            run = 0
+
+    return {
+        "total": total,
+        "range_start": daily[0][0],
+        "range_end": daily[-1][0],
+        "current_streak": current_streak,
+        "current_start": current_start,
+        "current_end": current_end,
+        "longest_streak": longest,
+        "longest_start": longest_start,
+        "longest_end": longest_end,
+    }
+
+
+def render_streak_svg(username: str, sk: dict) -> str:
+    width, height = 460, 150
+    col_w = width / 3
+
+    def col(cx, big, label, sub):
+        return f'''
+        <g>
+          <text x="{cx}" y="70" fill="{TITLE}" font-size="32" font-weight="800"
+                font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">{big}</text>
+          <text x="{cx}" y="94" fill="{TEXT}" font-size="12"
+                font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">{label}</text>
+          <text x="{cx}" y="112" fill="{MUTED}" font-size="10"
+                font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">{sub}</text>
+        </g>'''
+
+    total_sub = f"{fmt_date(sk['range_start'])} — {fmt_date(sk['range_end'])}"
+    if sk["current_streak"] > 0:
+        current_sub = f"{fmt_date(sk['current_start'])} — {fmt_date(sk['current_end'])}"
+    else:
+        current_sub = "Sem sequência ativa"
+    longest_sub = (
+        f"{fmt_date(sk['longest_start'])} — {fmt_date(sk['longest_end'])}"
+        if sk["longest_streak"] > 0 else "—"
+    )
+
+    r = 46
+    cx2 = width / 2
+
+    body = col(col_w / 2, f"{sk['total']:,}", "Total de contribuições", total_sub)
+    body += f'<circle cx="{cx2}" cy="55" r="{r}" fill="none" stroke="{BORDER}" stroke-width="2"/>'
+    body += col(cx2, sk["current_streak"], "Sequência atual", current_sub)
+    body += col(width - col_w / 2, sk["longest_streak"], "Maior sequência", longest_sub)
+
+    svg = f'''<svg width="{width}" height="{height}" viewBox="0 0 {width} {height}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sequência de contribuições de {username}">
+  <rect x="0.5" y="0.5" rx="12" width="{width - 1}" height="{height - 1}" fill="{BG}" stroke="{BORDER}" stroke-width="1"/>
+  <line x1="{col_w}" y1="20" x2="{col_w}" y2="{height - 20}" stroke="{BORDER}" stroke-width="1" opacity="0.5"/>
+  <line x1="{2 * col_w}" y1="20" x2="{2 * col_w}" y2="{height - 20}" stroke="{BORDER}" stroke-width="1" opacity="0.5"/>
+  {body}
+</svg>'''
+    return svg
+
+
 def main():
     username = os.environ.get("GH_USERNAME")
     token = os.environ.get("GH_PAT")
@@ -370,7 +482,11 @@ def main():
     with open("dist/trophies.svg", "w", encoding="utf-8") as f:
         f.write(render_trophies_svg(username, stats))
 
-    print("Gerado: dist/stats.svg, dist/top-langs.svg, dist/activity.svg e dist/trophies.svg")
+    streak_data = compute_streaks(stats["daily_contributions"])
+    with open("dist/streak.svg", "w", encoding="utf-8") as f:
+        f.write(render_streak_svg(username, streak_data))
+
+    print("Gerado: dist/stats.svg, dist/top-langs.svg, dist/activity.svg, dist/trophies.svg e dist/streak.svg")
 
 
 if __name__ == "__main__":
