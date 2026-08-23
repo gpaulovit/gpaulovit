@@ -1,7 +1,7 @@
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:2E1065,50:6D28D9,100:A78BFA&height=190&section=header&text=Paulo%20Vitor%20Gomes&fontSize=38&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Software%20Engineering%20%7C%20Artificial%20Intelligence%20%26%20Project%20Management&descAlignY=58&descSize=16" width="100%"/>
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&duration=3000&pause=1000&color=A78BFA&center=true&vCenter=true&width=600&lines=AI+Resident+-+Instituto+Eldorado+x+UnB;Bridging+business+and+technology;Machine+Learning+%7C+Data+%7C+Software;PMI+%7C+Scrum+%7C+Kanban;Always+evolving" alt="Typing SVG" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&duration=3000&pause=1000&color=A78BFA&center=true&vCenter=true&width=600&lines=Bridging+business+and+technology;Machine+Learning+%7C+Data+%7C+Software;PMI+%7C+Scrum+%7C+Kanban;Always+evolving" alt="Typing SVG" />
 
 <a href="https://www.linkedin.com/in/gpaulovit" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-12121a?style=for-the-badge&logo=linkedin&logoColor=A78BFA" alt="LinkedIn"/></a>
 <a href="mailto:bpaulovitorgomes@gmail.com"><img src="https://img.shields.io/badge/Email-12121a?style=for-the-badge&logo=gmail&logoColor=A78BFA" alt="Email"/></a>
