@@ -1,41 +1,55 @@
-<svg width="460" height="300" viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GitHub stats de gpaulovit">
-  <rect x="0.5" y="0.5" rx="12" width="459" height="299" fill="#12121a" stroke="#2E1065" stroke-width="1"/>
+<svg width="530" height="300" viewBox="0 0 530 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GitHub stats de gpaulovit">
+  <rect x="0.5" y="0.5" rx="12" width="529" height="299" fill="#12121a" stroke="#2E1065" stroke-width="1"/>
   <text x="25" y="35" fill="#A78BFA" font-size="17" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif">Estatísticas do GitHub</text>
-  <line x1="25" y1="46" x2="435" y2="46" stroke="#2E1065" stroke-width="1"/>
+  <line x1="25" y1="46" x2="505" y2="46" stroke="#2E1065" stroke-width="1"/>
+  <line x1="400" y1="55" x2="400" y2="285" stroke="#2E1065" stroke-width="1" opacity="0.5"/>
   
         <g transform="translate(25, 70)">
           <rect x="0" y="4" width="8" height="8" rx="2" fill="#A78BFA"/>
           <text x="20" y="13" fill="#E5E7EB" font-size="13" font-family="Segoe UI, Helvetica, Arial, sans-serif">Estrelas conquistadas</text>
-          <text x="415" y="13" fill="#A78BFA" font-size="14" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">3</text>
+          <text x="375" y="13" fill="#A78BFA" font-size="14" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">3</text>
         </g>
         <g transform="translate(25, 100)">
           <rect x="0" y="4" width="8" height="8" rx="2" fill="#8B5CF6"/>
           <text x="20" y="13" fill="#E5E7EB" font-size="13" font-family="Segoe UI, Helvetica, Arial, sans-serif">Repositórios públicos</text>
-          <text x="415" y="13" fill="#A78BFA" font-size="14" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">12</text>
+          <text x="375" y="13" fill="#A78BFA" font-size="14" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">12</text>
         </g>
         <g transform="translate(25, 130)">
           <rect x="0" y="4" width="8" height="8" rx="2" fill="#7C3AED"/>
           <text x="20" y="13" fill="#E5E7EB" font-size="13" font-family="Segoe UI, Helvetica, Arial, sans-serif">Pull Requests abertos</text>
-          <text x="415" y="13" fill="#A78BFA" font-size="14" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">34</text>
+          <text x="375" y="13" fill="#A78BFA" font-size="14" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">34</text>
         </g>
         <g transform="translate(25, 160)">
           <rect x="0" y="4" width="8" height="8" rx="2" fill="#6D28D9"/>
           <text x="20" y="13" fill="#E5E7EB" font-size="13" font-family="Segoe UI, Helvetica, Arial, sans-serif">Issues abertas</text>
-          <text x="415" y="13" fill="#A78BFA" font-size="14" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">26</text>
+          <text x="375" y="13" fill="#A78BFA" font-size="14" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">26</text>
         </g>
         <g transform="translate(25, 190)">
           <rect x="0" y="4" width="8" height="8" rx="2" fill="#5B21B6"/>
           <text x="20" y="13" fill="#E5E7EB" font-size="13" font-family="Segoe UI, Helvetica, Arial, sans-serif">Revisões de código</text>
-          <text x="415" y="13" fill="#A78BFA" font-size="14" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">59</text>
+          <text x="375" y="13" fill="#A78BFA" font-size="14" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">59</text>
         </g>
         <g transform="translate(25, 220)">
           <rect x="0" y="4" width="8" height="8" rx="2" fill="#4C1D95"/>
           <text x="20" y="13" fill="#E5E7EB" font-size="13" font-family="Segoe UI, Helvetica, Arial, sans-serif">Seguidores</text>
-          <text x="415" y="13" fill="#A78BFA" font-size="14" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">27</text>
+          <text x="375" y="13" fill="#A78BFA" font-size="14" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">27</text>
         </g>
         <g transform="translate(25, 250)">
           <rect x="0" y="4" width="8" height="8" rx="2" fill="#A78BFA"/>
           <text x="20" y="13" fill="#E5E7EB" font-size="13" font-family="Segoe UI, Helvetica, Arial, sans-serif">Commits (histórico total)</text>
-          <text x="415" y="13" fill="#A78BFA" font-size="14" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">468</text>
+          <text x="375" y="13" fill="#A78BFA" font-size="14" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">470</text>
         </g>
+  
+    <g>
+      <circle cx="465.0" cy="150.0" r="42" fill="none" stroke="#2E1065" stroke-width="8"/>
+      <circle cx="465.0" cy="150.0" r="42" fill="none" stroke="#4C1D95" stroke-width="8"
+              stroke-linecap="round" stroke-dasharray="75.7 263.9"
+              transform="rotate(-90 465.0 150.0)"/>
+      <text x="465.0" y="160.0" fill="#4C1D95" font-size="30" font-weight="800"
+            font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">B-</text>
+      <text x="465.0" y="214.0" fill="#6B7280" font-size="11"
+            font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">Classificação</text>
+      <text x="465.0" y="229.0" fill="#6B7280" font-size="10"
+            font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">top 71.3%</text>
+    </g>
 </svg>
