@@ -67,7 +67,7 @@ Estudante de **Engenharia de Software na UnB** (IRA 4.04), atuando como ponte en
 </div>
 
 <div align="center">
-<img src="https://github-profile-trophy.vercel.app/?username=gpaulovit&theme=algolia&no-frame=true&no-bg=true&row=1&column=6&margin-w=8" alt="trophies"/>
+<img src="dist/trophies.svg" alt="trophies"/>
 </div>
 
 <br/>
