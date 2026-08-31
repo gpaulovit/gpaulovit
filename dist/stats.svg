@@ -12,7 +12,7 @@
         <g transform="translate(25, 100)">
           <rect x="0" y="4" width="8" height="8" rx="2" fill="#8B5CF6"/>
           <text x="20" y="13" fill="#E5E7EB" font-size="13" font-family="Segoe UI, Helvetica, Arial, sans-serif">Repositórios públicos</text>
-          <text x="375" y="13" fill="#A78BFA" font-size="14" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">13</text>
+          <text x="375" y="13" fill="#A78BFA" font-size="14" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">14</text>
         </g>
         <g transform="translate(25, 130)">
           <rect x="0" y="4" width="8" height="8" rx="2" fill="#7C3AED"/>
@@ -37,13 +37,13 @@
         <g transform="translate(25, 250)">
           <rect x="0" y="4" width="8" height="8" rx="2" fill="#A78BFA"/>
           <text x="20" y="13" fill="#E5E7EB" font-size="13" font-family="Segoe UI, Helvetica, Arial, sans-serif">Commits (histórico total)</text>
-          <text x="375" y="13" fill="#A78BFA" font-size="14" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">517</text>
+          <text x="375" y="13" fill="#A78BFA" font-size="14" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">524</text>
         </g>
   
     <g>
       <circle cx="465.0" cy="150.0" r="42" fill="none" stroke="#2E1065" stroke-width="8"/>
       <circle cx="465.0" cy="150.0" r="42" fill="none" stroke="#4C1D95" stroke-width="8"
-              stroke-linecap="round" stroke-dasharray="82.0 263.9"
+              stroke-linecap="round" stroke-dasharray="82.2 263.9"
               transform="rotate(-90 465.0 150.0)"/>
       <text x="465.0" y="160.0" fill="#4C1D95" font-size="30" font-weight="800"
             font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">B-</text>
