@@ -9,15 +9,15 @@
           <text x="76.66666666666667" y="94" fill="#E5E7EB" font-size="12"
                 font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">Total de contribuições</text>
           <text x="76.66666666666667" y="112" fill="#6B7280" font-size="10"
-                font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">23 jan 2022 — 3 set 2026</text>
+                font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">23 jan 2022 — 4 set 2026</text>
         </g><circle cx="230.0" cy="55" r="46" fill="none" stroke="#2E1065" stroke-width="2"/>
         <g>
           <text x="230.0" y="70" fill="#A78BFA" font-size="32" font-weight="800"
-                font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">8</text>
+                font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">0</text>
           <text x="230.0" y="94" fill="#E5E7EB" font-size="12"
                 font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">Sequência atual</text>
           <text x="230.0" y="112" fill="#6B7280" font-size="10"
-                font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">26 ago 2026 — 2 set 2026</text>
+                font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">Sem sequência ativa</text>
         </g>
         <g>
           <text x="383.3333333333333" y="70" fill="#A78BFA" font-size="32" font-weight="800"
