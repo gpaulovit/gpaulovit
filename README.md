@@ -10,14 +10,9 @@
 
 ## About me
 
-Hi everyone 👋 I'm Paulo, a **Software Engineering student at the University of Brasília (UnB)** and currently an **Artificial Intelligence Resident** at Instituto Eldorado in partnership with UnB. 
+Hi everyone. I'm Paulo, a **Software Engineering student at the University of Brasília (UnB)** and currently an **Artificial Intelligence Resident** at Instituto Eldorado in partnership with UnB. 
 
-I have a strong foundation in logic, mathematics, and problem-solving, which I leverage to build efficient solutions. I operate at the intersection of technology, data, and business: combining machine learning, data analysis, and solid software engineering practices to solve real-world problems. My practical experience in **project management (PMI, Scrum, Kanban)** acts as a differentiator, allowing me to bridge the gap between technical and business stakeholders through process mapping, requirement elicitation, and a strict focus on value delivery.
-
-*  **AI Resident** — Instituto Eldorado - UnB (2026), with hands-on experience in machine learning and data applications.
-*  **Software Engineering** — UnB (2024–2028) · Teaching Assistant for *Software Development Methods* and *Calculus 1*.
-*  **Project Manager (Volunteer)** — PMI Federal District (PMI Student Club).
-*  **Full Stack Development** — Building robust solutions while continuously improving teamwork and documentation skills.
+I have a strong foundation in logic, mathematics, and problem-solving, which I leverage to build efficient solutions. I operate at the intersection of technology, data, and business: combining machine learning, data analysis, and solid software engineering practices to solve real-world problems. My practical experience in project management allowing me to bridge the gap between technical and business stakeholders through process mapping, requirement elicitation, and a strict focus on value delivery.
 
 <br/>
 
