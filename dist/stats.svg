@@ -12,7 +12,7 @@
         <g transform="translate(25, 100)">
           <rect x="0" y="4" width="8" height="8" rx="2" fill="#8B5CF6"/>
           <text x="20" y="13" fill="#E5E7EB" font-size="13" font-family="Segoe UI, Helvetica, Arial, sans-serif">Repositórios públicos</text>
-          <text x="375" y="13" fill="#A78BFA" font-size="14" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">15</text>
+          <text x="375" y="13" fill="#A78BFA" font-size="14" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">16</text>
         </g>
         <g transform="translate(25, 130)">
           <rect x="0" y="4" width="8" height="8" rx="2" fill="#7C3AED"/>
@@ -27,17 +27,17 @@
         <g transform="translate(25, 190)">
           <rect x="0" y="4" width="8" height="8" rx="2" fill="#5B21B6"/>
           <text x="20" y="13" fill="#E5E7EB" font-size="13" font-family="Segoe UI, Helvetica, Arial, sans-serif">Revisões de código</text>
-          <text x="375" y="13" fill="#A78BFA" font-size="14" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">66</text>
+          <text x="375" y="13" fill="#A78BFA" font-size="14" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">67</text>
         </g>
         <g transform="translate(25, 220)">
           <rect x="0" y="4" width="8" height="8" rx="2" fill="#4C1D95"/>
           <text x="20" y="13" fill="#E5E7EB" font-size="13" font-family="Segoe UI, Helvetica, Arial, sans-serif">Seguidores</text>
-          <text x="375" y="13" fill="#A78BFA" font-size="14" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">30</text>
+          <text x="375" y="13" fill="#A78BFA" font-size="14" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">29</text>
         </g>
         <g transform="translate(25, 250)">
           <rect x="0" y="4" width="8" height="8" rx="2" fill="#A78BFA"/>
           <text x="20" y="13" fill="#E5E7EB" font-size="13" font-family="Segoe UI, Helvetica, Arial, sans-serif">Commits (histórico total)</text>
-          <text x="375" y="13" fill="#A78BFA" font-size="14" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">567</text>
+          <text x="375" y="13" fill="#A78BFA" font-size="14" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">574</text>
         </g>
   
     <g>
