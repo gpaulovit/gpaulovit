@@ -22,7 +22,7 @@
         <g transform="translate(25, 160)">
           <rect x="0" y="4" width="8" height="8" rx="2" fill="#6D28D9"/>
           <text x="20" y="13" fill="#E5E7EB" font-size="13" font-family="Segoe UI, Helvetica, Arial, sans-serif">Issues abertas</text>
-          <text x="375" y="13" fill="#A78BFA" font-size="14" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">80</text>
+          <text x="375" y="13" fill="#A78BFA" font-size="14" font-weight="700" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">79</text>
         </g>
         <g transform="translate(25, 190)">
           <rect x="0" y="4" width="8" height="8" rx="2" fill="#5B21B6"/>
